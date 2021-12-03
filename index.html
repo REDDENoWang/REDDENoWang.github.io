@@ -1,0 +1,190 @@
+<!-- V2.0版，修正时间显示没有0的bug -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--移动端自适应-->
+    <link rel="stylesheet" type="text/css" href="fx_yangshi.css">
+    <link rel="stylesheet" type="text/css" href="access.css">
+    <title>济南大学返校系统</title>
+</head>
+
+<script>
+
+    var DispGateFlag    = 0; //进门标识变量
+    var LeaveHiddenFlag = 0; //请假div隐藏标志
+
+    function play()
+    {
+        var nowTime;
+        var time = new Date();
+        var mouth; 
+        var day;
+        var hour;
+        var minute;
+        var second;
+        if ( time.getMonth()+1 < 10)  { mouth  = "0" + (time.getMonth()+1); } else { mouth  = time.getMonth()+1 }
+        if ( time.getDate()    < 10)  { day    = "0" +  time.getDate();     } else { day    = time.getDate()   }
+        if ( time.getHours()   < 10)  { hour   = "0" +  time.getHours();    } else { hour   = time.getHours()   }
+        if ( time.getMinutes() < 10)  { minute = "0" +  time.getMinutes();  } else { minute = time.getMinutes()   }
+        if ( time.getSeconds() < 10)  { second = "0" +  time.getSeconds();  } else { second = time.getSeconds()   }
+        nowTime ="当前时间："+ time.getFullYear()+"年"+mouth+"月"+day+"日"+hour+"时"+minute+"分"+second+"秒";
+        document.getElementById("times").innerHTML = nowTime;
+    }
+    setInterval(play,1000);//每一秒执行一次
+
+    function DispInGate()
+    {
+        if (DispGateFlag==0)
+        {
+            document.getElementById("addressName").innerHTML = "扫码地点：新西门";
+            DispGateFlag = 1;
+        }
+        else
+        {
+            document.getElementById("addressName").innerHTML = "扫码地点：东南门";
+            DispGateFlag = 0;
+        }
+        console.log("扫码地点已更改。");
+    }
+
+    function GetInSchoolTime()
+    {
+        var time = new Date();
+        var DispTime;
+        var mouth; 
+        var day;
+        var hour;
+        var minute;
+        var second;
+        if ( time.getMonth()+1 < 10)  { mouth  = "0" + (time.getMonth()+1); } else { mouth  = time.getMonth()+1 }
+        if ( time.getDate()    < 10)  { day    = "0" +  time.getDate();     } else { day    = time.getDate()   }
+        if ( time.getHours()   < 10)  { hour   = "0" +  time.getHours();    } else { hour   = time.getHours()   }
+        if ( time.getMinutes() < 10)  { minute = "0" +  time.getMinutes();  } else { minute = time.getMinutes()   }
+        if ( time.getSeconds() < 10)  { second = "0" +  time.getSeconds();  } else { second = time.getSeconds()   }
+        DispTime = time.getFullYear()+"-"+mouth+"-"+day+" "+hour+":"+minute+":"+second;
+        document.getElementById("timeName").innerHTML = "进入时间：" + DispTime;
+        console.log("入门时间已显示。");
+    }
+
+    function GetInOutTime()
+    {
+        var time = new Date();
+        var DispTime;
+        DispTime = time.getFullYear()+"-"+(time.getMonth()+1)+"-"+(time.getDate());
+        document.getElementById("qjkssj").innerHTML = DispTime;
+        DispTime = time.getFullYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+        document.getElementById("qjjssj").innerHTML = DispTime;
+        console.log("离校时间已显示。");
+    }
+
+    function HiddenLeave()
+    {
+        if (LeaveHiddenFlag == 0)  {
+            document.getElementById("leave").style.display = "none";
+            LeaveHiddenFlag = 1;
+            console.log("请假信息已隐藏。");
+        }
+        else
+        {
+            document.getElementById("leave").style.display = "block";
+            LeaveHiddenFlag = 0;
+            console.log("请假信息已显示。");
+        }
+        
+    }
+
+</script>
+
+<body>
+
+    <!--绿卡主体元素-->
+    <div class="jiangkangma" style="margin-top: 5px;;" id="background_ka">
+        <div class="jiangkangma_padding">
+            <div style="text-align: left;">
+                <span style="font-size: 16px;font-weight: 900;">济南大学</span>
+                <br>
+                <span style="font-size: 14px;">返校健康卡</span>
+            </div>
+
+            <div class="position_bottom">
+                <div class="left_0_bottom_0">
+                    <div class="erweima"  id="code">
+                        <image src="erweim.png" style="width: 100%;height: 100%" ></image>
+                    </div>
+                </div>
+
+                <!--在这里输入你的姓名班级等信息-->
+                <div class="stu_info">
+                    <span id="name">济小南(本科生)</span>
+                    <span id="College">人文学院</span>
+                    <span id="class">人文2101班</span>
+                    <span style="font-size: 12px;" id="student">202101234567</span>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <!--下面这个是右上角的性别卡片，男生蓝色女生橙色，这里默认是蓝色，女生请修改css文件中颜色-->
+        <div class="sanjiaoxing" id="gender"></div>
+    </div>
+
+    <!--显示实时时间-->
+    <p style="text-align:left;margin: 10px auto 0 auto;width: 90%;font-size: 16px;" id="times"></p>
+
+    <p id="addressName" onclick="DispInGate()" style="text-align:left;margin: 10px auto 0 auto;width: 90%;font-size: 24px;font-weight: bolder;">
+        点此显示扫码地点
+    </p>
+
+    <p id="timeName" onclick="GetInSchoolTime()" style="text-align:left;margin: 10px auto 0 auto;width: 90%;font-size: 24px;font-weight: bolder;">
+        点此显示扫码时间
+    </p>
+
+    <div id="leave" onclick="GetInOutTime()" style="text-align:left; margin: 10px auto 0 auto; width:90%; display:none">
+        <p>申请编号：<span id="sqbh">2101232115846921</span></p>
+        <p>开始时间：<span id="qjkssj"></span></p>
+        <p>结束时间：<span id="qjjssj"></span></p>
+        <p>请假事由：<span id="qjsy">去医院复诊</span></p>
+    </div>
+
+    <div id="zhengque1" style="text-align: center;margin-bottom: -10px"  >
+        <image src="zhengque1.jpg" style="width: 60%;height: 60%" ></image>
+    </div>
+
+    
+    <div id="addTemp" >
+        <span class="button_sao"  style="width:90%;background-color: #2eabff;margin:10px auto 0 auto; text-align: center;" onclick="tem()">
+            体温上报
+        </span>
+    </div>
+
+
+    <div>
+        <span class="button_sao"  style="width:90%;background-color: #FF8C00;margin:10px auto 0 auto; text-align: center;" onclick="temRecord()">
+            体温上报记录
+        </span>
+    </div>
+
+    <div onclick="HiddenLeave()" style="text-align: center;">
+        <!--若实际界面没有“日常外出登记”按钮，请使用以下代码-->
+        <span class="button_sao"  style="width:90%;display:inline-block; background-color: #047DE2;margin:10px auto 0 auto; text-align: center;" onclick="outFestival()">
+            节假日去向登记
+        </span>
+        <!--若实际界面有“日常外出登记”按钮，请使用以下代码-->
+        <!--<span class="button_sao"  style="width:45%;display:inline-block; background-color: #047DE2;margin:10px auto 0 auto; text-align: center;" onclick="outRegister()">
+            日常外出登记
+        </span>
+        <span class="button_sao"  style="width:45%;display:inline-block; background-color: #047DE2;margin:10px auto 0 auto; text-align: center;" onclick="outFestival()">
+            节假日去向登记
+        </span>-->
+    </div>
+
+    <div >
+        <span class="button_sao"id="btnOkStu"  style="width:90%;background-color: #32CD32;margin:10px auto 0 auto; text-align: center;">
+            出入扫码
+        </span>
+    </div>
+</body>
+
+</html>

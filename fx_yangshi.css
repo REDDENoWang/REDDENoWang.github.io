@@ -1,0 +1,146 @@
+.addbutton{
+    display: block;
+    width: 50%;
+    line-height: 60px;
+    background: #FF0000;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+.code{
+    /*margin-top: 20px;*/
+    text-align: center;
+}
+.text_span{
+    color: #FF0000;
+
+}
+.img_span{
+    width: 80%;
+    /*height: 160px;*/
+    /*background: #FF3333;*/
+    margin: 0 auto;
+}
+.img_span img{
+    width: 100%;
+}
+.sanjiaoxing{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+    background: #047DE2;
+    right: -50px;
+    top: -50px;
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); 	/* IE 9 */
+    -moz-transform:rotate(45deg); 	/* Firefox */
+    -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+    -o-transform:rotate(45deg); 	/* Opera */
+}
+
+.position_bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+.left_1_bottom_0{
+    /*float: left;*/
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    font-size: 14px;
+}
+.stu_info{
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    float: right;
+    text-align: right;
+    font-size: 14px;
+}
+
+/*.stu_info{*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*text-align: right;*/
+    /*font-size: 14px;*/
+/*}*/
+.stu_info span{
+    display: block;
+    padding: 2px;
+}
+.left_0_bottom_0{
+    position: absolute;bottom: 0;
+}
+.erweima{
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 5px;
+}
+.erweima div{
+    width: 70px;
+    height: 70px;
+    /*background: #336AB2;*/
+    border-radius: 6px;
+}
+.jiangkangma{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 90%;
+    height: 200px;
+    background: #0CBF73;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.jiangkangma_padding{
+    color: #fff;
+    position: absolute;
+    width: 90%;
+    height: 180px;
+    top: 10px;
+    left: 5%;
+}
+#code img{
+    width: 100%;
+    height: 100%;
+}
+#img_span1 img{
+    width: 100%;
+    height: 100%;
+}
+input[type="radio"] + label::before {
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 1em;
+    height: 1em;
+    margin-right: .4em;
+    border-radius: 50%;
+    border: 1px solid #01cd78;
+    text-indent: .15em;
+    line-height: 1;
+}
+input[type="radio"]:checked + label::before {
+    background-color: #01cd78;
+    background-clip: content-box;
+    padding: .1em;
+    width:.9rem;
+    height:.9rem;
+}
+input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+
+}
+
